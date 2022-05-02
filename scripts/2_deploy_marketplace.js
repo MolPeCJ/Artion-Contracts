@@ -38,12 +38,12 @@ async function main() {
   await marketplaceProxy.deployed();
   console.log('Marketplace Proxy deployed at ', marketplaceProxy.address);
 
-  const marketplace = await ethers.getContractAt(
+  /*const marketplace = await ethers.getContractAt(
     'FantomMarketplace',
     marketplaceProxy.address
   );
   await marketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
-  console.log('Marketplace Proxy initialized');
+  console.log('Marketplace Proxy initialized');*/
 
   namesAndAddresses.proxyAdmin = proxyAdmin.address;
   namesAndAddresses.marketplaceImpl = marketplaceImpl.address;

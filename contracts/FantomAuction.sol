@@ -146,6 +146,8 @@ contract FantomAuction is OwnableUpgradeable, ReentrancyGuardUpgradeable {
         uint256 lastBidTime;
     }
 
+    uint public example61 = 0;
+
     /// @notice ERC721 Address -> Token ID -> Auction Parameters
     mapping(address => mapping(uint256 => Auction)) public auctions;
 

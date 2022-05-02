@@ -25,6 +25,7 @@ contract ProxyAdmin is Ownable {
     return abi.decode(returndata, (address));
   }
 
+  uint public example0123 = 2;
   /**
    * @dev Returns the admin of a proxy. Only the admin can query it.
    * @return The address of the current admin of the proxy.

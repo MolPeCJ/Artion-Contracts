@@ -11,6 +11,9 @@ contract FantomArtFactory is Ownable {
     event ContractDisabled(address caller, address nft);
 
     /// @notice Fantom marketplace contract address;
+
+    uint public example132 = 0;
+
     address public marketplace;
 
     /// @notice Fantom bundle marketplace contract address;

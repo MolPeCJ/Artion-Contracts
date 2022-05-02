@@ -1,10 +1,14 @@
 // to deploy locally
 // run: npx hardhat node on a terminal
 // then run: npx hardhat run --network localhost scripts/12_deploy_all.js
+const fs = require('fs');
+const network = hre.network.name;
+
 async function main(network) {
 
     console.log('network: ', network.name);
 
+    const namesAndAddresses = {};
     const [deployer] = await ethers.getSigners();
     const deployerAddress = await deployer.getAddress();
     console.log(`Deployer's address: `, deployerAddress);
@@ -48,8 +52,8 @@ async function main(network) {
     const MARKETPLACE_PROXY_ADDRESS = marketplaceProxy.address;
     const marketplace = await ethers.getContractAt('FantomMarketplace', marketplaceProxy.address);
     
-    await marketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
-    console.log('Marketplace Proxy initialized');
+    /*await marketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
+    console.log('Marketplace Proxy initialized');*/
     
     /////////
 
@@ -71,8 +75,8 @@ async function main(network) {
     const BUNDLE_MARKETPLACE_PROXY_ADDRESS = bundleMarketplaceProxy.address;
     const bundleMarketplace = await ethers.getContractAt('FantomBundleMarketplace', bundleMarketplaceProxy.address);
     
-    await bundleMarketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
-    console.log('Bundle Marketplace Proxy initialized');
+    /*await bundleMarketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
+    console.log('Bundle Marketplace Proxy initialized');*/
     
     ////////
 
@@ -93,8 +97,8 @@ async function main(network) {
     const AUCTION_PROXY_ADDRESS = auctionProxy.address;
     const auction = await ethers.getContractAt('FantomAuction', auctionProxy.address);
     
-    await auction.initialize(TREASURY_ADDRESS);
-    console.log('Auction Proxy initialized');
+    /*await auction.initialize(TREASURY_ADDRESS);
+    console.log('Auction Proxy initialized');*/
    
     ////////
 
@@ -258,6 +262,44 @@ async function main(network) {
 
     await tokenRegistry.add(WRAPPED_FTM);
 
+    namesAndAddresses.artion = artion.address;
+    //
+    namesAndAddresses.proxyAdmin = proxyAdmin.address;
+    namesAndAddresses.marketplaceImpl = marketplaceImpl.address;
+    namesAndAddresses.marketplaceProxy = marketplaceProxy.address;
+    //
+    namesAndAddresses.bundleMarketplaceImpl = bundleMarketplaceImpl.address;
+    namesAndAddresses.bundleMarketplaceProxy = bundleMarketplaceProxy.address;
+    //
+    namesAndAddresses.auctionImpl = auctionImpl.address;
+    namesAndAddresses.auctionProxy = auctionProxy.address;
+    //
+    namesAndAddresses.factory = factory.address;
+    namesAndAddresses.privateFactory = privateFactory.address;
+    //
+    namesAndAddresses.nft = nft.address; // NFTTradable
+    namesAndAddresses.nftPrivate = nftPrivate.address;
+    //
+    namesAndAddresses.tokenRegistry = tokenRegistry.address;
+    //
+    namesAndAddresses.addressRegistry = addressRegistry.address;
+    //
+    namesAndAddresses.priceFeed = priceFeed.address;
+    //
+    namesAndAddresses.artTradable = artTradable.address;
+    namesAndAddresses.artTradablePrivate = artTradablePrivate.address;
+    //
+    namesAndAddresses.artFactory = artFactory.address;
+    namesAndAddresses.artFactoryPrivate = artFactoryPrivate.address;
+
+    const data = await JSON.stringify(namesAndAddresses, null, 2);
+    const dir = './networks/';
+    if (!fs.existsSync(dir)) {
+     fs.mkdirSync(dir, { recursive: true });
+    }
+    const fileName = 'deploy_all_' + `${network}.json`;
+
+    await fs.writeFileSync(dir + fileName, data, { encoding: 'utf8' });
   }
   
   // We recommend this pattern to be able to use async/await everywhere

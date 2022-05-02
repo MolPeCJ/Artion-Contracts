@@ -19,7 +19,7 @@ module.exports = {
     },
   },
   /*gasReporter: {
-    currency: 'USD',
+    currency: 'BNB',
     enabled: false,
     gasPrice: 50,
   },*/
@@ -41,6 +41,10 @@ module.exports = {
       url: process.env.RPC_NODE_URL_BSCTESTNET,
       accounts: [process.env.PRIVATE_KEY]
     },
+    goerli: {
+      url: process.env.RPC_NODE_URL_GOERLI,
+      accounts: [process.env.PRIVATE_KEY]
+    }
   },
   etherscan: {
     apiKey: process.env.SCAN_API_KEY

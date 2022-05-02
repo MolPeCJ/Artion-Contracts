@@ -30,6 +30,8 @@ contract FantomArtTradable is
     // Optional mapping for token URIs
     mapping(uint256 => string) private _tokenURIs;
 
+    uint public example42 = 0;
+
     mapping(uint256 => address) public creators;
     mapping(uint256 => uint256) public tokenSupply;
 
