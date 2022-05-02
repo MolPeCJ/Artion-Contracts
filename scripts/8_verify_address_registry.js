@@ -1,4 +1,4 @@
-// npx hardhat run scripts/1_verify_nft.js --network *
+// npx hardhat run scripts/8_verify_address_registry.js --network *
 const network = hre.network.name;
 const fs = require("fs");
 

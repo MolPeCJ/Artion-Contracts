@@ -1,4 +1,4 @@
-// npx hardhat run scripts/1_verify_nft.js --network *
+// npx hardhat run scripts/9_verify_price_feed.js --network *
 const network = hre.network.name;
 const fs = require("fs");
 const {

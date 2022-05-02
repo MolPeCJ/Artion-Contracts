@@ -1,3 +1,6 @@
+require('dotenv').config();
+const network = hre.network.name;
+const fs = require('fs');
 const {
   TREASURY_ADDRESS,
   PLATFORM_FEE,
@@ -6,6 +9,7 @@ const {
 } = require('./constants');
 
 async function main() {
+  const namesAndAddresses = {};
   const Marketplace = await ethers.getContractFactory(
     'FantomBundleMarketplace'
   );
@@ -18,18 +22,18 @@ async function main() {
   );
 
   // Mainnet
-  const marketplaceProxy = await AdminUpgradeabilityProxyFactory.deploy(
-    marketplaceImpl.address,
-    PROXY_ADDRESS_MAINNET,
-    []
-  );
+  //const marketplaceProxy = await AdminUpgradeabilityProxyFactory.deploy(
+  //  marketplaceImpl.address,
+  //  PROXY_ADDRESS_MAINNET,
+  //  []
+  //);
 
   // Testnet
-  // const marketplaceProxy = await AdminUpgradeabilityProxyFactory.deploy(
-  //   marketplaceImpl.address,
-  //   PROXY_ADDRESS_TESTNET,
-  //   []
-  // );
+  const marketplaceProxy = await AdminUpgradeabilityProxyFactory.deploy(
+    marketplaceImpl.address,
+    PROXY_ADDRESS_TESTNET,
+    []
+  );
 
   await marketplaceProxy.deployed();
   console.log(
@@ -43,6 +47,18 @@ async function main() {
   );
   await marketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
   console.log('Bundle Marketplace Proxy initialized');
+
+  namesAndAddresses.marketplaceImpl = marketplaceImpl.address;
+  namesAndAddresses.marketplaceProxy = marketplaceProxy.address;
+
+  const data = await JSON.stringify(namesAndAddresses, null, 2);
+  const dir = './networks/';
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  const fileName = 'bundleMarketplace_bundleMarketplaceProxy_' + `${network}.json`;
+
+  await fs.writeFileSync(dir + fileName, data, { encoding: 'utf8' });
 }
 
 // We recommend this pattern to be able to use async/await everywhere

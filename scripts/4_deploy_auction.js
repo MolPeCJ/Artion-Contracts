@@ -1,3 +1,5 @@
+const network = hre.network.name;
+const fs = require('fs');
 const {
   TREASURY_ADDRESS,
   PROXY_ADDRESS_TESTNET,
@@ -5,6 +7,7 @@ const {
 } = require('./constants');
 
 async function main() {
+  const namesAndAddresses = {};
   const Auction = await ethers.getContractFactory('FantomAuction');
   const auctionImpl = await Auction.deploy();
   await auctionImpl.deployed();
@@ -37,6 +40,17 @@ async function main() {
   // );
   // await auction.initialize(TREASURY_ADDRESS);
   // console.log('Auction Proxy initialized');
+
+  namesAndAddresses.auctionImpl = auctionImpl.address;
+
+  const data = await JSON.stringify(namesAndAddresses, null, 2);
+  const dir = './networks/';
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  const fileName = 'auction_' + `${network}.json`;
+
+  await fs.writeFileSync(dir + fileName, data, { encoding: 'utf8' });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
