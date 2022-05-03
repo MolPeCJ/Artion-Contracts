@@ -24,7 +24,7 @@ contract Artion is ERC721("Artion", "ART"), Ownable {
 
     /// @dev current max tokenId
 
-    uint public example317 = 0;
+    //uint public example317 = 0;
     
     uint256 public tokenIdPointer;
 

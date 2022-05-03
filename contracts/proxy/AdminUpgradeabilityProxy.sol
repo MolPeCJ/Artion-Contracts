@@ -316,7 +316,7 @@ contract AdminUpgradeabilityProxy is UpgradeabilityProxy {
         _setAdmin(_admin);
     }
 
-    uint public example222 = 5;
+   // uint public example1222 = 15;
 
     /**
      * @dev Emitted when the administration has been transferred.

@@ -27,7 +27,7 @@ contract FantomArtTradablePrivate is
 {
     uint256 private _currentTokenID = 0;
 
-    uint public example53 = 0;
+    //uint public example53 = 0;
 
     // Optional mapping for token URIs
     mapping(uint256 => string) private _tokenURIs;

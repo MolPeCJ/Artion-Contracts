@@ -1,5 +1,5 @@
 // npx hardhat run scripts/scripts2/_deploy_all.js --network *
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
+const fs = require('fs');
 const network = hre.network.name;
 
 async function main(network) {
@@ -292,12 +292,12 @@ async function main(network) {
 
     const data = await JSON.stringify(namesAndAddresses, null, 2);
     const dir = './networks/';
-    if (!existsSync(dir)) {
-     mkdirSync(dir, { recursive: true });
+    if (!fs.existsSync(dir)) {
+     fs.mkdirSync(dir, { recursive: true });
     }
     const fileName = 'deploy_all_' + `${network}.json`;
 
-    await writeFileSync(dir + fileName, data, { encoding: 'utf8' });
+    await fs.writeFileSync(dir + fileName, data, { encoding: 'utf8' });
   }
   
   // We recommend this pattern to be able to use async/await everywhere

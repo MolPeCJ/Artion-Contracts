@@ -99,7 +99,7 @@ contract FantomBundleMarketplace is
         uint256 deadline;
     }
 
-    uint public example7212 = 0;
+    //uint public example7212 = 0;
 
     bytes4 private constant INTERFACE_ID_ERC721 = 0x80ac58cd;
     bytes4 private constant INTERFACE_ID_ERC1155 = 0xd9b67a26;

@@ -12,7 +12,7 @@ contract FantomArtFactoryPrivate is Ownable {
 
     /// @notice Fantom marketplace contract address;
 
-    uint public example26 = 0;
+    //uint public example26 = 0;
     
     address public marketplace;
 
