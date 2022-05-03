@@ -35,7 +35,7 @@ FantomArtFactoryPrivate
 
 #### | Artion
 Юзер может минтить, сжигать токены erc-721 и проверять их существование по id.  За операции
-взимается комиссия, устанавливаемся владельцем и переводимая по указанному адресу
+взимается комиссия, устанавливаемая владельцем и переводимая по указанному адресу
 
 #### | ProxyAdmin
 Администратор прокси-сервера, отвечает за его обновление и передачу другому администратору
@@ -61,15 +61,13 @@ FantomArtFactoryPrivate
 // #### | AuctionProxy ?
 
 #### | FantomNFTFactory
-"Фабрика" по созданию erc-721 формата FantomNFTTradable с первоначальной возможностью их использования в указанных фабрикой аукционе, маркетплейсе и бандл-маркетплейсе.  
-Далее юзер может изменять данные  
+"Фабрика" по созданию erc-721 формата FantomNFTTradable с первоначальной возможностью их использования в указанных фабрикой аукционе, маркетплейсе и бандл-маркетплейсе
 
 #### | FantomNFTFactoryPrivate
 "Фабрика" по созданию erc-721 формата FantomNFTTradablePrivate с теми же возможностями, что и FantomNFTFactory
 
 #### | FantomNFTTradable
-Контракт erc-721, cоздается через FantomNFTFactory. Юзер может изменить: address _auction, address _marketplace, address _bundleMarketplace, uint256 _platformFee, address payable _feeReceipient.  
-То есть, все данные
+Контракт erc-721, cоздается через FantomNFTFactory. Юзер может изменить: address _auction, address _marketplace, address _bundleMarketplace, uint256 _platformFee, address payable _feeReceipient
 
 #### | FantomNFTTradablePrivate
 Контракт erc-721, cоздается через FantomNFTFactoryPrivate. Чеканить erc-721 может только  
