@@ -18,9 +18,9 @@ ProxyAdmin ->
 AdminUpgradeabilityProxy ->  
 FantomMarketplace ->  
 FantomBundleMarketplace ->  
-? FantomBundleMarketPlaceProxy ->  
+FantomBundleMarketPlaceProxy ->  
 FantomAuction ->  
-? AuctionProxy ->  
+AuctionProxy ->  
 FantomNFTFactory ->  
 FantomNFTFactoryPrivate ->  
 FantomNFTTradable ->  
@@ -52,13 +52,9 @@ FantomArtFactoryPrivate
 Контракт-маркетплейса erc-721/erc-1155 с возможностью купить или разместить на продажу связку (bundle) NFT.  
 Тоже есть особые оферы с оплатой в желаемом erc-20, ограниченные по времени
 
-// #### | FantomBundleMarketPlaceProxy ?
-
 #### | FantomAuction
 Контракт-аукцион, владелец токена erc-721 может выставить его в качестве лота, а также отменить в любой момент отменить его.  
 Участник аукциона не может купить предмет ниже пороговой стоимости
-
-// #### | AuctionProxy ?
 
 #### | FantomNFTFactory
 "Фабрика" по созданию erc-721 формата FantomNFTTradable с первоначальной возможностью их использования в указанных фабрикой аукционе, маркетплейсе и бандл-маркетплейсе
