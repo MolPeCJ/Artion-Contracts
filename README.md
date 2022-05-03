@@ -1,11 +1,15 @@
-### Description
+### Описание
 
-This repositry contains an augmented project "Artion-Contracts" by Fantom-foundation.  
-All the deploy scripts have been changed. Alse verify scripts have been added.
+Этот репозиторий содержит дополненный проект "Artion-Contracts" от Fantom-foundation. 
+Все скрипты деплоя были изменены. Также были добавлены скрипты верификации
 
 ***
 
-### Deploy instruction 
+### Схема взаимодействия смарт-контрактов
+
+![](https://ipfs.io/ipfs/QmPcong3UfkoxAtD4mGvAGtEsNwndtAYH5uAyfkqoPumAL?filename=Fantom_new.png)
+
+### deploy_all.js
 
 #### Порядок деплоя:  
 
@@ -14,9 +18,9 @@ ProxyAdmin ->
 AdminUpgradeabilityProxy ->  
 FantomMarketplace ->  
 FantomBundleMarketplace ->  
-? ->  
+? FantomBundleMarketPlaceProxy ->  
 FantomAuction ->  
-? ->  
+? AuctionProxy ->  
 FantomNFTFactory ->  
 FantomNFTFactoryPrivate ->  
 FantomNFTTradable ->  
@@ -64,8 +68,8 @@ FantomArtFactoryPrivate
 "Фабрика" по созданию erc-721 формата FantomNFTTradablePrivate с теми же возможностями, что и FantomNFTFactory
 
 #### | FantomNFTTradable
-Контракт erc-721, cоздается через FantomNFTFactory. Юзер может изменить: address _auction, address _marketplace,  
-address _bundleMarketplace, uint256 _platformFee, address payable _feeReceipient. То есть, все данные
+Контракт erc-721, cоздается через FantomNFTFactory. Юзер может изменить: address _auction, address _marketplace, address _bundleMarketplace,  
+uint256 _platformFee, address payable _feeReceipient. То есть, все данные
 
 #### | FantomNFTTradablePrivate
 Контракт erc-721, cоздается через FantomNFTFactoryPrivate. Чеканить erc-721 может только  
