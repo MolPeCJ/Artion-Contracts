@@ -8,8 +8,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract FantomAddressRegistry is Ownable {
     bytes4 private constant INTERFACE_ID_ERC721 = 0x80ac58cd;
 
-    //uint public example11 = 0;
-
     /// @notice Artion contract
     address public artion;
 

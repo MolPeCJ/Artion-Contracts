@@ -23,8 +23,6 @@ contract FantomTokenRegistry is Ownable {
     emit TokenAdded(token);
   }
 
-  //uint public example148 = 0;
-
   /**
   @notice Method for removing payment token
   @dev Only admin

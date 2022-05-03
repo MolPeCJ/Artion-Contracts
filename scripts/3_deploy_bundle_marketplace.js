@@ -41,12 +41,12 @@ async function main() {
     marketplaceProxy.address
   );
 
-  /*const marketplace = await ethers.getContractAt(
+  const marketplace = await ethers.getContractAt(
     'FantomBundleMarketplace',
     marketplaceProxy.address
   );
   await marketplace.initialize(TREASURY_ADDRESS, PLATFORM_FEE);
-  console.log('Bundle Marketplace Proxy initialized');*/
+  console.log('Bundle Marketplace Proxy initialized');
 
   namesAndAddresses.marketplaceImpl = marketplaceImpl.address;
   namesAndAddresses.marketplaceProxy = marketplaceProxy.address;

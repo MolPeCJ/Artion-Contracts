@@ -24,8 +24,6 @@ contract FantomNFTTradablePrivate is ERC721, Ownable {
         address payable feeRecipient
     );
 
-    //uint public example139 = 0;
-
     address auction;
     address marketplace;
     address bundleMarketplace;

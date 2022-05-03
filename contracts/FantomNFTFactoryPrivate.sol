@@ -16,8 +16,6 @@ contract FantomNFTFactoryPrivate is Ownable {
     /// @notice Fantom marketplace contract address;
     address public marketplace;
 
-    //uint public example125 = 0;
-
     /// @notice Fantom bundle marketplace contract address;
     address public bundleMarketplace;
 

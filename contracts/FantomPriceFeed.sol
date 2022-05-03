@@ -33,8 +33,6 @@ contract FantomPriceFeed is Ownable {
         wFTM = _wFTM;
     }
 
-    //uint public example130 = 0;
-
     /**
      @notice Register oracle contract to token
      @dev Only owner can register oracle
