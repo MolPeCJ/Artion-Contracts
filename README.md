@@ -28,7 +28,7 @@ FantomNFTTradablePrivate ->
 FantomTokenRegistry ->  
 FantomAddressRegistry ->  
 FantomPriceFeed ->  
-FantomArtTradable -> 
+FantomArtTradable ->  
 FantomArtTradablePrivate ->  
 FantomArtFactory ->  
 FantomArtFactoryPrivate
