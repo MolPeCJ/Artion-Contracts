@@ -7,7 +7,7 @@ All the deploy scripts have been changed. Alse verify scripts have been added.
 
 ### Deploy instruction 
 
-Порядок деплоя:  
+#### Порядок деплоя:  
 
 Artion ->  
 ProxyAdmin ->  
@@ -48,13 +48,13 @@ FantomArtFactoryPrivate
 Контракт-маркетплейса erc-721/erc-1155 с возможностью купить или разместить на продажу связку (bundle) NFT.  
 Тоже есть особые оферы с оплатой в желаемом erc-20, ограниченные по времени
 
-FantomBundleMarketPlaceProxy. ?
+// #### | FantomBundleMarketPlaceProxy ?
 
 #### | FantomAuction
 Контракт-аукцион, владелец токена erc-721 может выставить его в качестве лота, а также отменить в любой момент отменить его.  
 Участник аукциона не может купить предмет ниже пороговой стоимости
 
-AuctionProxy. ?
+// #### | AuctionProxy ?
 
 #### | FantomNFTFactory
 "Фабрика" по созданию erc-721 формата FantomNFTTradable с первоначальной возможностью их использования в указанных фабрикой аукционе,  
