@@ -1,6 +1,6 @@
 const network = hre.network.name;
 const fs = require('fs');
-const { TREASURY_ADDRESS } = require('./constants');
+const { TREASURY_ADDRESS, ARTION_PLATFORM_FEE } = require('./constants');
 
 async function main() {
   const namesAndAddresses = {};
@@ -10,7 +10,7 @@ async function main() {
   console.log('Deploying nft with address:', deployerAddress);
 
   const ArtionInstance = await ethers.getContractFactory('Artion');
-  const Artion = await ArtionInstance.deploy(TREASURY_ADDRESS, '2000000000000000000');
+  const Artion = await ArtionInstance.deploy(TREASURY_ADDRESS, ARTION_PLATFORM_FEE);
 
   await Artion.deployed();
 

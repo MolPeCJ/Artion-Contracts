@@ -4,7 +4,11 @@ const fs = require('fs');
 const {
   TREASURY_ADDRESS,
   MARKETPLACE,
-  BUNDLE_MARKETPLACE
+  BUNDLE_MARKETPLACE,
+  ART_FACTORY_MINT_FEE,
+  ART_FACTORY_PLATFORM_FEE,
+  ART_FACTORY_PRIVATE_MINT_FEE,
+  ART_FACTORY_PRIVATE_PLATFORM_FEE
 } = require('./constants');
 
 async function main() {
@@ -18,9 +22,9 @@ async function main() {
       constructorArguments: [
         MARKETPLACE,
         BUNDLE_MARKETPLACE,
-        '20000000000000000000',
+        ART_FACTORY_MINT_FEE,
         TREASURY_ADDRESS,
-        '10000000000000000000'],
+        ART_FACTORY_PLATFORM_FEE],
       contract: "contracts/FantomArtFactory.sol:FantomArtFactory",
     });
     await hre.run("verify:verify", {
@@ -28,9 +32,9 @@ async function main() {
       constructorArguments: [
         MARKETPLACE,
         BUNDLE_MARKETPLACE,
-        '20000000000000000000',
+        ART_FACTORY_PRIVATE_MINT_FEE,
         TREASURY_ADDRESS,
-        '10000000000000000000'],
+        ART_FACTORY_PRIVATE_PLATFORM_FEE],
       contract: "contracts/FantomArtFactoryPrivate.sol:FantomArtFactoryPrivate",
     });
   } catch (e) {

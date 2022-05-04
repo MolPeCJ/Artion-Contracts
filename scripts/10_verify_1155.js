@@ -4,7 +4,13 @@ const fs = require("fs");
 const {
     TREASURY_ADDRESS,
     MARKETPLACE,
-    BUNDLE_MARKETPLACE
+    BUNDLE_MARKETPLACE,
+    ART_TRADABLE_NAME,
+    ART_TRADABLE_SYMBOL,
+    ART_TRADABLE_PLATFORM_FEE,
+    ART_TRADABLE_PRIVATE_NAME,
+    ART_TRADABLE_PRIVATE_SYMBOL,
+    ART_TRADABLE_PRIVATE_PLATFORM_FEE
   } = require('./constants');
 
 async function main() {
@@ -16,9 +22,9 @@ async function main() {
     await hre.run("verify:verify", {
       address: data.artTradable,
       constructorArguments: [ 
-      'FantomArt',
-      'FART',
-      '20000000000000000000',
+      ART_TRADABLE_NAME,
+      ART_TRADABLE_SYMBOL,
+      ART_TRADABLE_PLATFORM_FEE,
       TREASURY_ADDRESS,
       MARKETPLACE,
       BUNDLE_MARKETPLACE],
@@ -27,9 +33,9 @@ async function main() {
     await hre.run("verify:verify", {
       address: data.artTradablePrivate,
       constructorArguments: [ 
-      'IFantomArt',
-      'IFART',
-      '20000000000000000000',
+      ART_TRADABLE_PRIVATE_NAME,
+      ART_TRADABLE_PRIVATE_SYMBOL,
+      ART_TRADABLE_PRIVATE_PLATFORM_FEE,
       TREASURY_ADDRESS,
       MARKETPLACE,
       BUNDLE_MARKETPLACE],

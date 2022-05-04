@@ -4,7 +4,11 @@ const {
   TREASURY_ADDRESS,
   AUCTION,
   MARKETPLACE,
-  BUNDLE_MARKETPLACE
+  BUNDLE_MARKETPLACE,
+  NFT_FACTORY_MINT_FEE, 
+  NFT_FACTORY_PLATFORM_FEE, 
+  NFT_FACTORY_PRIVATE_MINT_FEE, 
+  NFT_FACTORY_PRIVATE_PLATFORM_FEE
 } = require('./constants');
 
 async function main() {
@@ -14,9 +18,9 @@ async function main() {
     AUCTION,
     MARKETPLACE,
     BUNDLE_MARKETPLACE,
-    '10000000000000000000',
+    NFT_FACTORY_MINT_FEE,
     TREASURY_ADDRESS,
-    '50000000000000000000'
+    NFT_FACTORY_PLATFORM_FEE
   );
   await NFTFactory.deployed();
   console.log('FantomNFTFactory deployed to:', NFTFactory.address);
@@ -28,9 +32,9 @@ async function main() {
     AUCTION,
     MARKETPLACE,
     BUNDLE_MARKETPLACE,
-    '10000000000000000000',
+    NFT_FACTORY_PRIVATE_MINT_FEE,
     TREASURY_ADDRESS,
-    '50000000000000000000'
+    NFT_FACTORY_PRIVATE_PLATFORM_FEE
   );
   await NFTFactoryPrivate.deployed();
   console.log('FantomNFTFactoryPrivate deployed to:', NFTFactoryPrivate.address);

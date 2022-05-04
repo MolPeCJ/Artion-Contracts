@@ -1,11 +1,13 @@
 // npx hardhat run scripts/scripts2/verify_all.js --network *
 const network = hre.network.name;
 const fs = require("fs");
-const { 
-    TREASURY_ADDRESS,  
-    WRAPPED_FTM_MAINNET, 
-    WRAPPED_FTM_TESTNET 
-} = require('../constants');
+const { TREASURY_ADDRESS, PLATFORM_FEE, WRAPPED_FTM_MAINNET, WRAPPED_FTM_TESTNET, ARTION_PLATFORM_FEE,
+  NFT_FACTORY_MINT_FEE, NFT_FACTORY_PLATFORM_FEE, NFT_FACTORY_PRIVATE_MINT_FEE, 
+  NFT_FACTORY_PRIVATE_PLATFORM_FEE, NFT_TRADABLE_NAME, NFT_TRADABLE_SYMBOL, NFT_TRADABLE_PLATFORM_FEE,
+  NFT_TRADABLE_PRIVATE_NAME, NFT_TRADABLE_PRIVATE_SYMBOL, NFT_TRADABLE_PRIVATE_PLATFORM_FEE, 
+  ART_TRADABLE_NAME, ART_TRADABLE_SYMBOL, ART_TRADABLE_PLATFORM_FEE, ART_TRADABLE_PRIVATE_NAME, 
+  ART_TRADABLE_PRIVATE_SYMBOL, ART_TRADABLE_PRIVATE_PLATFORM_FEE, ART_FACTORY_MINT_FEE, ART_FACTORY_PLATFORM_FEE, 
+  ART_FACTORY_PRIVATE_MINT_FEE, ART_FACTORY_PRIVATE_PLATFORM_FEE } = require('../constants');
 
 async function main() {
   const dir = "./networks/";
@@ -15,7 +17,7 @@ async function main() {
   try {
     await hre.run("verify:verify", {
       address: data.artion,
-      constructorArguments: [TREASURY_ADDRESS, '2000000000000000000'],
+      constructorArguments: [TREASURY_ADDRESS, ARTION_PLATFORM_FEE],
       contract: "contracts/FantomArtion.sol:Artion",
     });
     await hre.run("verify:verify", {
@@ -64,9 +66,9 @@ async function main() {
           data.auctionProxy,
           data.marketplaceProxy,
           data.bundleMarketplaceProxy,
-          '10000000000000000000',
+          NFT_FACTORY_MINT_FEE,
           TREASURY_ADDRESS,
-          '50000000000000000000'],
+          NFT_FACTORY_PLATFORM_FEE],
         contract: "contracts/FantomNFTFactory.sol:FantomNFTFactory",
       });
       await hre.run("verify:verify", {
@@ -75,32 +77,32 @@ async function main() {
           data.auctionProxy,
           data.marketplaceProxy,
           data.bundleMarketplaceProxy,
-          '10000000000000000000',
+          NFT_FACTORY_PRIVATE_MINT_FEE,
           TREASURY_ADDRESS,
-          '50000000000000000000'],
+          NFT_FACTORY_PRIVATE_PLATFORM_FEE],
         contract: "contracts/FantomNFTFactoryPrivate.sol:FantomNFTFactoryPrivate",
       });
       await hre.run("verify:verify", {
         address: data.nft,
         constructorArguments: [
-          'Artion',
-          'ART',
+          NFT_TRADABLE_NAME,
+          NFT_TRADABLE_SYMBOL,
           data.auctionProxy,
           data.marketplaceProxy,
           data.bundleMarketplaceProxy,
-          '10000000000000000000',
+          NFT_TRADABLE_PLATFORM_FEE,
           TREASURY_ADDRESS],
         contract: "contracts/FantomNFTTradable.sol:FantomNFTTradable",
       });
       await hre.run("verify:verify", {
         address: data.nftPrivate,
         constructorArguments: [
-          'IArtion',
-          'IART',
+          NFT_TRADABLE_PRIVATE_NAME,
+          NFT_TRADABLE_PRIVATE_SYMBOL,
           data.auctionProxy,
           data.marketplaceProxy,
           data.bundleMarketplaceProxy,
-          '10000000000000000000',
+          NFT_TRADABLE_PRIVATE_PLATFORM_FEE,
           TREASURY_ADDRESS],
         contract: "contracts/FantomNFTTradablePrivate.sol:FantomNFTTradablePrivate",
       });
@@ -120,9 +122,9 @@ async function main() {
       await hre.run("verify:verify", {
         address: data.artTradable,
         constructorArguments: [
-          'FantomArt',
-          'FART',
-          '20000000000000000000',
+          ART_TRADABLE_NAME,
+          ART_TRADABLE_SYMBOL,
+          ART_TRADABLE_PLATFORM_FEE,
           TREASURY_ADDRESS,
           data.marketplaceProxy,
           data.bundleMarketplaceProxy],
@@ -131,9 +133,9 @@ async function main() {
       await hre.run("verify:verify", {
         address: data.artTradablePrivate,
         constructorArguments: [
-          'FantomArt',
-          'FART',
-          '20000000000000000000',
+          ART_TRADABLE_PRIVATE_NAME,
+          ART_TRADABLE_PRIVATE_SYMBOL,
+          ART_TRADABLE_PRIVATE_PLATFORM_FEE,
           TREASURY_ADDRESS,
           data.marketplaceProxy,
           data.bundleMarketplaceProxy],
@@ -144,9 +146,9 @@ async function main() {
         constructorArguments: [
           data.marketplaceProxy,
           data.bundleMarketplaceProxy,
-          '20000000000000000000',
+          ART_FACTORY_MINT_FEE,
           TREASURY_ADDRESS,
-          '10000000000000000000'],
+          ART_FACTORY_PLATFORM_FEE],
         contract: "contracts/FantomArtFactory.sol:FantomArtFactory",
       });
       await hre.run("verify:verify", {
@@ -154,14 +156,13 @@ async function main() {
         constructorArguments: [
           data.marketplaceProxy,
           data.bundleMarketplaceProxy,
-          '20000000000000000000',
+          ART_FACTORY_PRIVATE_MINT_FEE,
           TREASURY_ADDRESS,
-          '10000000000000000000'],
+          ART_FACTORY_PRIVATE_PLATFORM_FEE],
         contract: "contracts/FantomArtFactoryPrivate.sol:FantomArtFactoryPrivate",
       });
     }
 }
-
 
 main()
   .then(() => process.exit(0))

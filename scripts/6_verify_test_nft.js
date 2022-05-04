@@ -5,7 +5,13 @@ const {
     TREASURY_ADDRESS,
     AUCTION,
     MARKETPLACE,
-    BUNDLE_MARKETPLACE
+    BUNDLE_MARKETPLACE,
+    NFT_TRADABLE_NAME,
+    NFT_TRADABLE_SYMBOL,
+    NFT_TRADABLE_PLATFORM_FEE,
+    NFT_TRADABLE_PRIVATE_NAME,
+    NFT_TRADABLE_PRIVATE_SYMBOL,
+    NFT_TRADABLE_PRIVATE_PLATFORM_FEE
   } = require('./constants');
 
 async function main() {
@@ -17,24 +23,24 @@ async function main() {
     await hre.run("verify:verify", {
       address: data.NFTTradable,
       constructorArguments: [ 
-      'Artion',
-      'ART',
+      NFT_TRADABLE_NAME,
+      NFT_TRADABLE_SYMBOL,
       AUCTION,
       MARKETPLACE,
       BUNDLE_MARKETPLACE,
-      '10000000000000000000',
+      NFT_TRADABLE_PLATFORM_FEE,
       TREASURY_ADDRESS],
       contract: "contracts/FantomNFTTradable.sol:FantomNFTTradable",
     });
     await hre.run("verify:verify", {
       address: data.NFTTradablePrivate,
       constructorArguments: [
-      'IArtion',
-      'IART',
+      NFT_TRADABLE_PRIVATE_NAME,
+      NFT_TRADABLE_PRIVATE_SYMBOL,
       AUCTION,
       MARKETPLACE,
       BUNDLE_MARKETPLACE,
-      '10000000000000000000',
+      NFT_TRADABLE_PRIVATE_PLATFORM_FEE,
       TREASURY_ADDRESS],
       contract: "contracts/FantomNFTTradablePrivate.sol:FantomNFTTradablePrivate",
     });

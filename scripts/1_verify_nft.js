@@ -1,7 +1,7 @@
 // npx hardhat run scripts/1_verify_nft.js --network *
 const network = hre.network.name;
 const fs = require("fs");
-const { TREASURY_ADDRESS } = require('./constants');
+const { TREASURY_ADDRESS, ARTION_PLATFORM_FEE } = require('./constants');
 
 async function main() {
   const dir = "./networks/";
@@ -11,7 +11,7 @@ async function main() {
   try {
     await hre.run("verify:verify", {
       address: data.Artion,
-      constructorArguments: [TREASURY_ADDRESS, '2000000000000000000'],
+      constructorArguments: [TREASURY_ADDRESS, ARTION_PLATFORM_FEE],
       contract: "contracts/FantomArtion.sol:Artion",
     });
   } catch (e) {

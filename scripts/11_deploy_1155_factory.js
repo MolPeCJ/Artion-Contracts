@@ -3,7 +3,11 @@ const fs = require('fs');
 const {
   TREASURY_ADDRESS,
   MARKETPLACE,
-  BUNDLE_MARKETPLACE
+  BUNDLE_MARKETPLACE,
+  ART_FACTORY_MINT_FEE,
+  ART_FACTORY_PLATFORM_FEE,
+  ART_FACTORY_PRIVATE_MINT_FEE,
+  ART_FACTORY_PRIVATE_PLATFORM_FEE
 } = require('./constants');
 
 async function main() {
@@ -12,9 +16,9 @@ async function main() {
   const artFactory = await artFactoryInstance.deploy(
     MARKETPLACE,
     BUNDLE_MARKETPLACE,
-    '20000000000000000000',
+    ART_FACTORY_MINT_FEE,
     TREASURY_ADDRESS,
-    '10000000000000000000'
+    ART_FACTORY_PLATFORM_FEE
   );
   await artFactory.deployed();
   console.log('FantomArtFactory deployed to:', artFactory.address);
@@ -25,9 +29,9 @@ async function main() {
   const artFactoryPrivate = await artFactoryPrivateInstance.deploy(
     MARKETPLACE,
     BUNDLE_MARKETPLACE,
-    '20000000000000000000',
+    ART_FACTORY_PRIVATE_MINT_FEE,
     TREASURY_ADDRESS,
-    '10000000000000000000'
+    ART_FACTORY_PRIVATE_PLATFORM_FEE
   );
   await artFactoryPrivate.deployed();
   console.log('FantomArtFactoryPrivate deployed to:', artFactoryPrivate.address);
