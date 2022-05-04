@@ -1,14 +1,27 @@
 {
   "name": "fmarket-sc",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "This repository contains the augmented project 'Artion-Contracts' from the Fantom-foundation",
+  "main": "hardhat.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "npx hardhat run scripts/*select the file you want to run* --network *select network*",
+    "deploy_all": "npx hardhat run scripts/scripts2/deploy_all.js --network *select network*",
+    "verify": "npx hardhat run scripts/*select the file you want to run* --network *select network*",
+    "verify_all": "npx hardhat run scripts/scripts2/verify_all.js --network *select network*"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": "https://github.com/MolPeCJ/Artion-Contracts",
+  "keywords": [
+    "ArtionContracts",
+    "market",
+    "erc721",
+    "erc1155"
+  ],
+  "author": "MolPeCJ",
+  "license": "MIT",
+  "engines": {
+    "npm": ">=6.12.0",
+    "node": ">=12.13.0"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.3",
